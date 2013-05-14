@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Regen repodata by FDewaleyne</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Regen repodata</h1>
+        <p>Script used to cause the events that will trigger a regeneration of repodata in satellite</p>
+
+        <p class="view"><a href="https://github.com/FDewaleyne/regen_repodata">View the Project on GitHub <small>FDewaleyne/regen_repodata</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/FDewaleyne/regen_repodata/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/FDewaleyne/regen_repodata/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/FDewaleyne/regen_repodata">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>regen_repodata</h1>
+
+<p>Script used to cause the events that will trigger a regeneration of repodata in satellite.</p>
+
+<pre><code>Usage: regen_repodata.py -c channelname|-l|-a [-f]
+ Requests to a satellite that a channel's repodata is regenerated
+ satellite 5.3 requires that you use --db or --cleandb
+ RHEL4 channels (and anterior) do not need their repodata to be generated to work.
+
+Options:
+  -h, --help            show this help message and exit
+  -l, --list            List all channels and quit
+  -c CHANNEL, --channel=CHANNEL
+                        Label of the channel to querry regeneration for
+  -a, --all             Causes a global regeneration instead of just one
+                        channel
+  -f, --force           Forces the operation ; can only work if the script is
+                        run on the satellite itself
+  --db                  Use the database instead of the api ; can only be used
+                        from the satellite itself. Implies --force
+  --cleandb             Get rid of the pending actions before adding the new
+                        ones. implies --db and force.
+</code></pre>
+
+<p><strong>NOTE</strong> : --db still requires access to the api to avoid adding channels that should not be generated (channels with no checksum type)</p>
+
+<p><strong>NOTE2</strong> : it is possible to store the connection credentials in a configuration file : .satellite or ~/.satellite or /etc/sysconfig/rhn/satellite.</p>
+
+<p>the format of the file should be</p>
+
+<pre><code>[default]
+url=https://yoursatellitefqdn/RPC/API
+[baseorg]
+username=satellitelogin
+password=satellitepassword
+</code></pre>
+
+<p>note that the content in [baseorg] isn't required ; if [default] is missing the configuration file will be ignored.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/FDewaleyne">FDewaleyne</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
